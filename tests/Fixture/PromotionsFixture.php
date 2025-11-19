@@ -23,8 +23,8 @@ class PromotionsFixture extends TestFixture
                 'code' => 'Lorem ipsum dolor sit amet',
                 'discount_percentage' => 1.5,
                 'status' => 1,
-                'created' => '2025-11-12 14:44:16',
-                'modified' => '2025-11-12 14:44:16',
+                'created' => '2025-11-19 00:21:20',
+                'modified' => '2025-11-19 00:21:20',
             ],
         ];
         parent::init();
