@@ -27,8 +27,8 @@ class VehiclesFixture extends TestFixture
                 'latitude' => 1.5,
                 'longitude' => 1.5,
                 'current_station_id' => 1,
-                'created' => '2025-11-12 14:44:22',
-                'modified' => '2025-11-12 14:44:22',
+                'created' => '2025-11-19 00:14:18',
+                'modified' => '2025-11-19 00:14:18',
             ],
         ];
         parent::init();

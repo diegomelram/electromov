@@ -24,8 +24,8 @@ class ModelsFixture extends TestFixture
                 'type' => 'Lorem ipsum dolor sit amet',
                 'brand' => 'Lorem ipsum dolor sit amet',
                 'rate_per_minute' => 1.5,
-                'created' => '2025-11-12 14:44:14',
-                'modified' => '2025-11-12 14:44:14',
+                'created' => '2025-11-19 00:22:13',
+                'modified' => '2025-11-19 00:22:13',
             ],
         ];
         parent::init();

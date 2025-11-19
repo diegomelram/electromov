@@ -45,6 +45,11 @@ class AppController extends Controller
          // Add this line to check authentication result and lock your site
         $this->loadComponent('Authentication.Authentication');
 
+        // Allow public access to the index action of the PagesController (for the homepage)
+        // and potentially other actions like register/login in your UsersController.
+        // Replace 'display' and 'add' with the actual actions you want public.
+        $this->Authentication->allowUnauthenticated(['display', 'add']);
+
         /*
          * Enable the following component for recommended CakePHP form protection settings.
          * see https://book.cakephp.org/5/en/controllers/components/form-protection.html
@@ -55,8 +60,6 @@ class AppController extends Controller
     public function beforeFilter(\Cake\Event\EventInterface $event): void
     {
         parent::beforeFilter($event);
-        // for all controllers in our application, make index and view
-        // actions public, skipping the authentication check
-        $this->Authentication->addUnauthenticatedActions(['index', 'view','add']);
+
     }
 }

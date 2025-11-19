@@ -47,6 +47,14 @@ return function (RouteBuilder $routes): void {
      * inconsistently cased URLs when used with `{plugin}`, `{controller}` and
      * `{action}` markers.
      */
+
+    $routes->prefix('Admin', function (RouteBuilder $routes) {
+    // Todas las rutas aquí tendrán el prefijo `/admin`, y
+    // tendrán el elemento de ruta `'prefix' => 'Admin'` agregado que
+    // será necesario para generar URL para estas rutas
+    $routes->fallbacks(DashedRoute::class);
+    });
+
     $routes->setRouteClass(DashedRoute::class);
 
     $routes->scope('/', function (RouteBuilder $builder): void {

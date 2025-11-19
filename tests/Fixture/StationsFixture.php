@@ -25,8 +25,8 @@ class StationsFixture extends TestFixture
                 'latitude' => 1.5,
                 'longitude' => 1.5,
                 'capacity' => 1,
-                'created' => '2025-11-12 14:44:17',
-                'modified' => '2025-11-12 14:44:17',
+                'created' => '2025-11-18 20:55:50',
+                'modified' => '2025-11-18 20:55:50',
             ],
         ];
         parent::init();
