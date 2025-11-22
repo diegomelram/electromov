@@ -11,7 +11,7 @@
 }
 
 header{
-	background: grey;
+	background: green;
 	border-bottom: 3px solid;
 }
 
@@ -40,7 +40,7 @@ nav {
 }
 
 .nav_links ul li a{
-	color:black;
+	color:white;
 	text-shadow: 1.5px 1.5px 2px black;
 	text-decoration: none;
 	font-size: 18px;
@@ -50,7 +50,7 @@ nav {
 }
 
 .nav_links ul li a:hover {
-	background-color: red; 
+	background-color: black; 
   	color: white;
 }
 
@@ -86,7 +86,7 @@ nav .fa{
 
 
 .site-footer {
-  background-color: grey;
+  background-color: green;
   color: black;
   padding: 40px 20px;
   font-size: 14px;
