@@ -53,6 +53,7 @@ class PagesController extends AppController
         }
         $page = $subpage = null;
 
+        $this->viewBuilder()->setLayout('unauthenticated');
         if (!empty($path[0])) {
             $page = $path[0];
         }
@@ -69,6 +70,17 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+    }
+
+
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+
+        // This allows the public to view the page without logging in.
+        $this->Authentication->allowUnauthenticated(['display']);
+
+
     }
 
 }

@@ -1,0 +1,40 @@
+.dashboard-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 150px 150px 150px;
+    gap: 70px;
+    padding: 40px;
+    grid-template-areas:
+        "card1 card2 card3"
+        "card4 card5 card6";
+}
+
+.metric-card {
+    border-radius: 50px;
+    background: #e3e4e7;
+    box-shadow:  20px 20px 60px #b3b6be,
+             -20px -20px 60px #f2f6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.metric-card:nth-child(1) { grid-area: card1; }
+.metric-card:nth-child(2) { grid-area: card2; }
+.metric-card:nth-child(3) { grid-area: card3; }
+.metric-card:nth-child(4) { grid-area: card4; }
+.metric-card:nth-child(5) { grid-area: card5; }
+.metric-card:nth-child(6) { grid-area: card6; }
+
+.metric-card h2 {
+    font-size: 1.1em;
+    margin: 20px;
+    font-weight: bold;
+    color: #333;
+
+}
+
+.metric-card p {
+    font-size: 1em;
+    margin: 10px 0 0 0;
+    font-weight: bold;
+    color: #2196F3;}

@@ -10,8 +10,7 @@ use App\Controller\AppController;
  *
  * Add your common administrative controller logic in here.
  */
-class AppController extends AppController
-{
+class AppController extends AppController{
     /**
      * Initialization hook method.
      *
@@ -21,8 +20,7 @@ class AppController extends AppController
     {
         parent::initialize();
         
-        // You can load admin-specific components here, like Authorization.
-        // For example:
         $this->loadComponent('Authentication.Authentication');
+
     }
 }
