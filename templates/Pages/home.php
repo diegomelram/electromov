@@ -7,18 +7,20 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/estilazo.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
 </head>
 
 <body>
 
-    <nav class="top-nav">
-        <img src="/img/electromov.jpg" alt="Logo Electromov" class="nav-logo">
-    </nav>
-
     <header class="hero">
         <h1 class="hero-title">Movilidad eléctrica para Irapuato</h1>
         <p class="hero-sub">Rápido, ecológico y accesible. Muévete con Electromov.</p>
-        <a href="#" class="cta-btn">Comenzar</a>
+        <a href="/users/add" class="cta-btn">Comenzar</a>
     </header>
 
     <section class="benefits">
@@ -40,6 +42,11 @@
                 <p>¡Reserva, desbloquea y paga en segundos!</p>
             </div>
         </div>
+    </section>
+
+    <section class="location">
+        <div id="map"></div>
+        var map = L.map('map').setView([51.505, -0.09], 13);
     </section>
 
     <footer>

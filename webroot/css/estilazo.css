@@ -29,12 +29,13 @@ body {
     text-align: center;
     padding: 120px 25px;
     animation: fadeIn 1.2s ease;
+    background:url('/img/background.jpg');
 }
 
 .hero-title {
     font-size: 3rem;
     font-weight: 700;
-    color: #2a6d45;
+    color: black;
     margin-bottom: 10px;
 }
 
@@ -78,7 +79,7 @@ body {
 .benefit-grid {
     display: grid;
     gap: 25px;
-    max-width: 1000px;
+    max-width: 100%;
     margin: auto;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
@@ -111,3 +112,25 @@ footer {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+
+.top-nav a{
+    display: inline-block; /* Allows setting padding, width, and height */
+    text-decoration: none; /* Removes the standard underline */
+    margin-left: 15px; /* Adds space between the logo and the button */
+    
+    /* 2. Appearance */
+    background-color: #007bff; /* A standard, professional blue */
+    color: white; /* White text for contrast */
+    padding: 8px 15px; /* Vertical and horizontal padding */
+    border-radius: 5px; /* Slightly rounded corners */
+    font-size: 16px; /* Ensure readability */
+    font-weight: 600; /* Bolder text to stand out (since you are using Poppins 600) */
+    
+    /* 3. Transition for Smooth Hover Effect */
+    transition: background-color 0.3s ease;
+    align-items: right;
+}
+
+/*//////////////////MAP/////////////*/
+#map { height: 180px; }

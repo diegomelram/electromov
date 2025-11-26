@@ -8,13 +8,13 @@
      <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Montserrat&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
+ 
 <body>
     <div class="container">
     <header>
         <nav>
         <h1>
-            <a href="/"><img src="/img/electromov.jpg" alt="logo"></a>
+            <a href="/"><img src="/img/electromov.png" alt="logo"></a>
         </h1>
         <div class="nav_links" id="navLinks">
             <i class="fa fa-times" onclick="hideMenu()"></i>
@@ -29,7 +29,7 @@
         </div>
         <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
-    </header>
+    </header> 
     
 <main>
 <?= $this->Flash->render() ?>
@@ -40,7 +40,7 @@
   <div class="footer-content">
 
     <div class="footer-brand">
-      <img src="/img/logo.png" alt="Our logo" class="footer-logo">
+      <img src="/img/electromov.png" alt="Our logo" class="footer-logo">
       <p>&copy; 2025 Electromov</p>
     </div>
 

@@ -71,4 +71,19 @@ class PagesController extends AppController
         }
     }
 
+
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+
+        // This allows the public to view the page without logging in.
+        $this->Authentication->allowUnauthenticated(['display']);
+
+        // Set the layout for the homepage (display action) to 'public'
+        // regardless of whether the user is logged in as an admin or a client.
+        if ($this->request->getParam('action') === 'display') {
+            $this->viewBuilder()->setLayout('public');
+        }
+    }
+
 }
