@@ -3,26 +3,20 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
+use App\Controller\AppController as BaseAppController;
 
-/**
- * App Controller for the Admin prefix
- *
- * Add your common administrative controller logic in here.
- */
-class AppController extends AppController
+class AppController extends BaseAppController
 {
-    /**
-     * Initialization hook method.
-     *
-     * @return void
-     */
     public function initialize(): void
     {
         parent::initialize();
-        
-        // You can load admin-specific components here, like Authorization.
-        // For example:
+
+        $this->viewBuilder()->setLayout('admin');
+
+        $this->Trips = $this->fetchTable('Trips');
+        $this->Vehicles = $this->fetchTable('Vehicles');
+        $this->Stations = $this->fetchTable('Stations');
+
         $this->loadComponent('Authentication.Authentication');
     }
 }
