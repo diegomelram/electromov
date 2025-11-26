@@ -45,10 +45,17 @@ class AppController extends Controller
          // Add this line to check authentication result and lock your site
         $this->loadComponent('Authentication.Authentication');
 
-        // Allow public access to the index action of the PagesController (for the homepage)
-        // and potentially other actions like register/login in your UsersController.
-        // Replace 'display' and 'add' with the actual actions you want public.
+
         $this->Authentication->allowUnauthenticated(['display']);
+
+
+        $identity = $this->request->getAttribute('identity');
+
+        if ($this->request->getParam('prefix') === 'Admin') {
+            $this->viewBuilder()->setLayout('admin');
+            return;
+        }
+        
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.
@@ -57,27 +64,5 @@ class AppController extends Controller
         //$this->loadComponent('FormProtection');
     }
 
-    public function beforeFilter(\Cake\Event\EventInterface $event)
-    {
-        parent::beforeFilter($event);
-
-        // 1. ADMIN Prefix Check
-        if ($this->request->getParam('prefix') === 'Admin') {
-            $this->viewBuilder()->setLayout('admin');
-            return; 
-        }
-
-        // Get the authenticated Identity (user object).
-        $identity = $this->request->getAttribute('identity');
-
-        // 2. CLIENT Layout Default Check
-        if ($identity && $identity->getOriginalData()->admin === NULL) {
-            $this->viewBuilder()->setLayout('default'); // Default (Client) Layout
-            return;
-        }
-        
-        // 3. Fallback (Public/Unauthenticated)
-        $this->viewBuilder()->setLayout('public'); // Public Layout
-    }
-
+    
 }

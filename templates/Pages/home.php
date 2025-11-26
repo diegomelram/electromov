@@ -17,6 +17,12 @@
 
 <body>
 
+    <nav class="top-nav">
+        <img src="/img/electromov.png" alt="Logo Electromov" class="nav-logo">
+        <a href="/users/login">Login</a>
+    </nav>
+
+
     <header class="hero">
         <h1 class="hero-title">Movilidad eléctrica para Irapuato</h1>
         <p class="hero-sub">Rápido, ecológico y accesible. Muévete con Electromov.</p>

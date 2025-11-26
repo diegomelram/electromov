@@ -53,6 +53,7 @@ class PagesController extends AppController
         }
         $page = $subpage = null;
 
+        $this->viewBuilder()->setLayout('unauthenticated');
         if (!empty($path[0])) {
             $page = $path[0];
         }
@@ -79,11 +80,7 @@ class PagesController extends AppController
         // This allows the public to view the page without logging in.
         $this->Authentication->allowUnauthenticated(['display']);
 
-        // Set the layout for the homepage (display action) to 'public'
-        // regardless of whether the user is logged in as an admin or a client.
-        if ($this->request->getParam('action') === 'display') {
-            $this->viewBuilder()->setLayout('public');
-        }
+
     }
 
 }
