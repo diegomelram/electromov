@@ -50,6 +50,30 @@
         </div>
     </section>
 
+    <section>
+        <div class="model-section">
+            <h2>Nuestra Flota y Tarifas</h2>
+            <p>Elige tu vehículo ideal y muévete por la ciudad.</p>
+        </div>
+            <div class="model-cards-container">
+            <?php foreach ($vehicleModels as $model): ?>
+                <div class="model-card">
+                    <h3><?= h($model->name) ?></h3>
+                    <p class="model-type">Tipo: <strong><?= h(ucfirst($model->type)) ?></strong></p>
+                    <p class="model-brand">Marca: <?= h($model->brand) ?></p>
+                    
+                    <div class="price-box">
+                        Tarifa Fija: 
+                        <span class="rate-per-minute">
+                            $<?= h(number_format($model->rate_per_minute, 2)) ?> / Minuto
+                        </span>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            </div>
+    </section>
+
+
     <section class="location">
         <div id="map"></div>
         var map = L.map('map').setView([51.505, -0.09], 13);

@@ -62,6 +62,19 @@ class PagesController extends AppController
         }
         $this->set(compact('page', 'subpage'));
 
+        // 1. Load the Models Table
+        $modelsTable = $this->fetchTable('Models'); //  Correct for CakePHP 5+
+
+        // 2. Fetch the data
+        // Fetch all models, ordered by type or name
+        $vehicleModels = $modelsTable->find('all', [
+            'order' => ['Models.name' => 'ASC']
+        ])->all();
+
+        // 3. Pass the data to the view
+        // 'vehicleModels' will now be available in your view template
+        $this->set(compact('vehicleModels'));
+
         try {
             return $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {
@@ -70,6 +83,7 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+        
     }
 
 

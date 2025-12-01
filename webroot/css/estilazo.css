@@ -29,7 +29,8 @@ body {
     text-align: center;
     padding: 120px 25px;
     animation: fadeIn 1.2s ease;
-    background:url('/img/background.jpg');
+    background:url('/img/background.png');
+    background-size: cover;
 }
 
 .hero-title {
@@ -37,12 +38,14 @@ body {
     font-weight: 700;
     color: black;
     margin-bottom: 10px;
+    text-shadow:5px 5px 15px white;
 }
 
 .hero-sub {
     font-size: 1.2rem;
     margin-bottom: 30px;
     color: #3c2e20;
+    text-shadow: 2px 2px 15px white;
 }
 
 
@@ -131,6 +134,20 @@ footer {
     transition: background-color 0.3s ease;
     align-items: right;
 }
+
+
+.model-cards-container{
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+}
+.model-section{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+
 
 /*//////////////////MAP/////////////*/
 #map { height: 180px; }

@@ -46,7 +46,7 @@ class AppController extends Controller
         $this->loadComponent('Authentication.Authentication');
 
 
-        $this->Authentication->allowUnauthenticated(['display']);
+        $this->Authentication->allowUnauthenticated(['display','add']);
 
 
         $identity = $this->request->getAttribute('identity');
