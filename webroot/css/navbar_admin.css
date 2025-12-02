@@ -362,7 +362,7 @@ body.dark #content nav .profile-menu li a {
     display: none;
     position: absolute;
     top: 56px;
-    right: 24px;
+    right: 240px;
     background: var(--light);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     border-radius: 15px;
