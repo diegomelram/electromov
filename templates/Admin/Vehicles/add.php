@@ -22,9 +22,9 @@
                     echo $this->Form->control('serial_number');
                     echo $this->Form->control('status');
                     echo $this->Form->control('battery_level');
-                    echo $this->Form->control('latitude');
-                    echo $this->Form->control('longitude');
-                    echo $this->Form->control('current_station_id');
+                    //echo $this->Form->control('latitude'); these lines are hidden since it is not necessary to add the while adding a vehicle
+                    //echo $this->Form->control('longitude');
+                    echo $this->Form->control('current_station_id',['options' => $stations]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

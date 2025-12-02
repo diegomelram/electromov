@@ -75,6 +75,12 @@ class PagesController extends AppController
         // 'vehicleModels' will now be available in your view template
         $this->set(compact('vehicleModels'));
 
+        // 4. Fetch Stations data (assuming you have a 'Stations' table)
+        $stationsTable = $this->fetchTable('Stations');
+        $stationsData = $stationsTable->find()->select(['name', 'latitude', 'longitude'])->all();
+        $this->set(compact('stationsData')); // Pass to view 
+        
+
         try {
             return $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {
