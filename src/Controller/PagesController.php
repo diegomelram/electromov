@@ -67,9 +67,17 @@ class PagesController extends AppController
 
         // 2. Fetch the data
         // Fetch all models, ordered by type or name
-        $vehicleModels = $modelsTable->find('all', [
-            'order' => ['Models.name' => 'ASC']
-        ])->all();
+        $vehicleModels = $modelsTable->find() // 'all' is the default finder, can be omitted
+        ->select([
+            'id', 
+            'name', 
+            'type', 
+            'brand', 
+            'rate_per_minute', 
+            'image_path' // Ensure this is also selected
+        ])
+        ->order(['Models.name' => 'ASC'])
+        ->all();
 
         // 3. Pass the data to the view
         // 'vehicleModels' will now be available in your view template
@@ -77,7 +85,7 @@ class PagesController extends AppController
 
         // 4. Fetch Stations data (assuming you have a 'Stations' table)
         $stationsTable = $this->fetchTable('Stations');
-        $stationsData = $stationsTable->find()->select(['name', 'latitude', 'longitude'])->all();
+        $stationsData = $stationsTable->find()->select(['id', 'name', 'latitude', 'longitude'])->all();
         $this->set(compact('stationsData')); // Pass to view 
         
 

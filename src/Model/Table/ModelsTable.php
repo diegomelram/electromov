@@ -41,6 +41,10 @@ class ModelsTable extends Table
     {
         parent::initialize($config);
 
+        // ADD the image_path field to the accessible list
+        // If you haven't defined $_accessible yet, add it:
+        $this->setSchema(['image_path' => ['type' => 'string']]); // Optional, but good practice if not using migrations
+
         $this->setTable('models');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');

@@ -55,6 +55,15 @@
             <?php foreach ($vehicleModels as $model): ?>
                 <div class="model-card">
                     <h3><?= h($model->name) ?></h3>
+                    <?php if (!empty($model->image_path)): ?>
+                        <?= $this->Html->image($model->image_path, [
+                            'alt' => 'Imagen de ' . h($model->name), 
+                            'class' => 'model-img',
+                            'style' => 'max-width: 200px; height: 200px;' // Optional styling
+                        ]) ?>
+                    <?php else: ?>
+                        <?= $this->Html->image('placeholder.png', ['alt' => 'Sin imagen', 'class' => 'model-img']) ?>
+                    <?php endif; ?>
                     <p class="model-type">Tipo: <strong><?= h(ucfirst($model->type)) ?></strong></p>
                     <p class="model-brand">Marca: <?= h($model->brand) ?></p>
                     
@@ -67,6 +76,7 @@
                 </div>
             <?php endforeach; ?>
             </div>
+            <?php pj($vehicleModels) ?>
     </section>
 
 

@@ -19,8 +19,16 @@ class StationsController extends AppController
     {
         $query = $this->Stations->find();
         $stations = $this->paginate($query);
+        $stationsTable = $this->fetchTable('Stations');
+        $stationsData = $stationsTable->find()->select(['id','name', 'latitude', 'longitude'])->all();
+        // 2. Fetch Available Vehicles (Vehicles currently associated with a station)
+        $vehiclesTable = $this->fetchTable('Vehicles');
+        $availableVehicles = $vehiclesTable->find()
+            ->select(['id', 'model_id', 'battery_level', 'current_station_id'])
+            ->where(['status' => 'disponible']) // Only show vehicles ready to rent
+            ->all();
 
-        $this->set(compact('stations'));
+        $this->set(compact('stations','stationsData','availableVehicles'));  
     }
 
     /**
@@ -32,8 +40,9 @@ class StationsController extends AppController
      */
     public function view($id = null)
     {
-        $station = $this->Stations->get($id, contain: []);
+        $station = $this->Stations->get($id, contain: ['Vehicles']);
         $this->set(compact('station'));
+
     }
 
     /**

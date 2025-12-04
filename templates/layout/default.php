@@ -20,9 +20,21 @@
             <i class="fa fa-times" onclick="hideMenu()"></i>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/vehicles/index">History</a></li>
+                <li><a href="/trips/index">History</a></li>
                 <li><a href="/promotions/index">Promotions</a></li>
-                <li><a href="/users/view">My Profile</a></li>
+                <li>
+                    <?php 
+                        // 1. Get the authenticated user's ID
+                        // The 'identity' attribute is set by the Authentication Component.
+                        $userId = $this->request->getAttribute('identity')->getOriginalData()->id;
+                        
+                        // 2. Use the HtmlHelper::link() for a correct URL, passing the ID as a parameter
+                        echo $this->Html->link(
+                            'My Profile', 
+                            ['controller' => 'Users', 'action' => 'view', $userId]
+                        );
+                    ?>
+                </li>
 
                 <li><?= $this->Html->link('Log out', ['controller' => 'Users', 'action' => 'logout']) ?></li>
             </ul>

@@ -4,10 +4,11 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
+<link rel="stylesheet" href="/css/estilazo.css">
         <div class="signup">
             <?= $this->Form->create($user) ?>
             <fieldset>
-                <legend><?= __('Regístrate') ?></legend>
+                <legend><?= __('Regístrate a Electromov') ?></legend>
                 <?php
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');

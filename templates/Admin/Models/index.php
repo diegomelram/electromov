@@ -25,6 +25,16 @@
                 <?php foreach ($models as $model): ?>
                 <tr>
                     <td><?= $this->Number->format($model->id) ?></td>
+                    <td>
+                        <?php if (!empty($model->image_path)): ?>
+                            <?= $this->Html->image($model->image_path, [
+                                'alt' => h($model->name),
+                                'style' => 'width: 50px; height: 50px; object-fit: cover;' // Thumbnail styling
+                            ]) ?>
+                        <?php else: ?>
+                            No image
+                        <?php endif; ?>
+                    </td>
                     <td><?= h($model->name) ?></td>
                     <td><?= h($model->type) ?></td>
                     <td><?= h($model->brand) ?></td>
