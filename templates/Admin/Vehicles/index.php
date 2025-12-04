@@ -23,6 +23,7 @@
                         : '—'
                     ?>
                 </p>
+                
                 <p><strong>Status:</strong> <?= h($vehicle->status) ?></p>
                 <p><strong>Battery:</strong> <?= $vehicle->battery_level ?>%</p>
             </div>

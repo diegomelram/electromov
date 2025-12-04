@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Station $station
  */
 ?>
-
+<link rel="stylesheet" href="/css/estilazo.css">
         <div class="stations view content">
             <h3> Vehículos disponibles en <?= h($station->name) ?></h3>
             <table>
@@ -32,29 +32,21 @@
             <p>Elige tu vehículo ideal y muévete por la ciudad.</p>
         </div>
             <div class="model-cards-container">
-            <?php foreach ($vehicleModels as $model): ?>
-                <div class="model-card">
-                    <h3><?= h($model->name) ?></h3>
-                    <?php if (!empty($model->image_path)): ?>
-                        <?= $this->Html->image($model->image_path, [
-                            'alt' => 'Imagen de ' . h($model->name), 
-                            'class' => 'model-img',
-                            'style' => 'max-width: 200px; height: 200px;' // Optional styling
-                        ]) ?>
-                    <?php else: ?>
-                        <?= $this->Html->image('placeholder.png', ['alt' => 'Sin imagen', 'class' => 'model-img']) ?>
+            <?php foreach ($availableVehicles as $vehicle): ?>
+                <div class="vehicle-card">
+                    <?php if (!empty($vehicle->model->image_path)): ?>
+                        <?= $this->Html->image($vehicle->model->image_path, ['class' => 'vehicle-img']) ?>
                     <?php endif; ?>
-                    <p class="model-type">Tipo: <strong><?= h(ucfirst($model->type)) ?></strong></p>
-                    <p class="model-brand">Marca: <?= h($model->brand) ?></p>
                     
-                    <div class="price-box">
-                        Tarifa Fija: 
-                        <span class="rate-per-minute">
-                            $<?= h(number_format($model->rate_per_minute, 2)) ?> / Minuto
-                        </span>
-                    </div>
+                    <h4><?= h($vehicle->model->name) ?></h4>
+                    <p>Batería: <?= h($vehicle->battery_level) ?>%</p>
+                    <p>Tarifa: $<?= $this->Number->format($vehicle->model->rate_per_minute) ?> / min</p>
+                    
+                    <?= $this->Html->link('Rentar Ahora', 
+                        ['controller' => 'Trips', 'action' => 'add', $vehicle->id], 
+                        ['class' => 'button']
+                    ) ?>
                 </div>
             <?php endforeach; ?>
             </div>
-            <?php pj($vehicleModels) ?>
     </section>

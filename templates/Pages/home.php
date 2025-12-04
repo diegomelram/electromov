@@ -76,7 +76,7 @@
                 </div>
             <?php endforeach; ?>
             </div>
-            <?php pj($vehicleModels) ?>
+
     </section>
 
 

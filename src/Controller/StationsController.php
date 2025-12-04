@@ -42,6 +42,21 @@ class StationsController extends AppController
     {
         $station = $this->Stations->get($id, contain: ['Vehicles']);
         $this->set(compact('station'));
+        
+        // 2. Obtener los vehículos DISPONIBLES en esta estación
+    // Necesitamos cargar la tabla 'Vehicles' primero
+        $vehiclesTable = $this->fetchTable('Vehicles');
+        
+        $availableVehicles = $vehiclesTable->find()
+            ->where([
+                'Vehicles.current_station_id' => $id, // Filtra por esta estación
+                'Vehicles.status' => 'disponible'     // Filtra solo los que se pueden rentar
+            ])
+            ->contain(['Models']) // ¡IMPORTANTE! Trae la información del Modelo (imagen, tarifa)
+            ->all();
+
+
+        $this->set(compact('availableVehicles'));
 
     }
 
