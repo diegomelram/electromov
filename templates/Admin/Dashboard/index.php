@@ -77,7 +77,7 @@
     <div id="map"></div>
 
 
-    <!-- CHART (NO LO MODIFIQUÉ) -->
+    <!-- CHART -->
     <script>
     document.addEventListener("DOMContentLoaded", () => {
 
