@@ -8,6 +8,7 @@
  * @var \Cake\Collection\CollectionInterface|string[] $promotions
  */
 ?>
+<link rel="stylesheet" href="/css/add.css">
 <div class="row">
     <aside class="column">
         <div class="side-nav">

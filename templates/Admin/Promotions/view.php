@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Promotion $promotion
  */
 ?>
+<link rel="stylesheet" href="/css/view.css">   
 <div class="row">
     <aside class="column">
         <div class="side-nav">

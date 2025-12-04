@@ -9,12 +9,10 @@
     <?php foreach ($users as $user): ?>
     <div class="card vehicle-card">
 
-        <!-- TÍTULO DE LA TARJETA -->
         <div class="card-title">
             <?= h($user->name) ?>
         </div>
 
-        <!-- CUERPO CON DOS COLUMNAS -->
         <div class="card-body two-columns">
 
             <div class="col">
@@ -31,7 +29,6 @@
 
         </div>
 
-        <!-- ACCIONES -->
         <div class="card-actions">
             <?= $this->Html->link(__('View'), ['action' => 'view', $user->id], ['class' => 'btn-view']) ?>
             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class' => 'btn-edit']) ?>

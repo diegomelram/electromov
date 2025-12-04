@@ -119,9 +119,7 @@
         let vehicleMarkers = [];
         let stationMarkers = [];
 
-        function loadMarkers() {
-            // Limpiar marcadores existentes
-            vehicleMarkers.forEach(m => map.removeLayer(m));
+        function loadMarkers() {            vehicleMarkers.forEach(m => map.removeLayer(m));
             stationMarkers.forEach(m => map.removeLayer(m));
             vehicleMarkers = [];
             stationMarkers = [];
@@ -129,7 +127,6 @@
             const statusFilter = document.getElementById("statusFilter").value;
             const batteryFilter = parseInt(document.getElementById("batteryFilter").value);
 
-            // === Estaciones ===
             stations.forEach(st => {
                 if (!st.latitude || !st.longitude) return;
 
@@ -141,11 +138,9 @@
                 marker.addTo(map);
             });
 
-            // === Vehículos ===
             vehicles.forEach(v => {
                 if (!v.latitude || !v.longitude) return;
 
-                // Filtros
                 if (statusFilter !== "all" && v.status !== statusFilter) return;
                 if (v.battery_level < batteryFilter) return;
 
@@ -165,7 +160,6 @@
 
         loadMarkers();
 
-        // Actualizar cuando cambian los filtros
         document.getElementById("statusFilter").addEventListener("change", loadMarkers);
         document.getElementById("batteryFilter").addEventListener("input", loadMarkers);
     </script>
