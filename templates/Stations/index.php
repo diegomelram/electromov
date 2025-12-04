@@ -1,61 +1,70 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var iterable<\App\Model\Entity\Station> $stations
- */
-?>
-<div class="stations index content">
-    <?= $this->Html->link(__('New Station'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Stations') ?></h3>
-    <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('name') ?></th>
-                    <th><?= $this->Paginator->sort('latitude') ?></th>
-                    <th><?= $this->Paginator->sort('longitude') ?></th>
-                    <th><?= $this->Paginator->sort('capacity') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($stations as $station): ?>
-                <tr>
-                    <td><?= $this->Number->format($station->id) ?></td>
-                    <td><?= h($station->name) ?></td>
-                    <td><?= $this->Number->format($station->latitude) ?></td>
-                    <td><?= $this->Number->format($station->longitude) ?></td>
-                    <td><?= $station->capacity === null ? '' : $this->Number->format($station->capacity) ?></td>
-                    <td><?= h($station->created) ?></td>
-                    <td><?= h($station->modified) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $station->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $station->id]) ?>
-                        <?= $this->Form->postLink(
-                            __('Delete'),
-                            ['action' => 'delete', $station->id],
-                            [
-                                'method' => 'delete',
-                                'confirm' => __('Are you sure you want to delete # {0}?', $station->id),
-                            ]
-                        ) ?>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
-</div>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electromov</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/estilazo.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+
+<body>
+    <section class="map-section-staions">
+        <h2>Escoge tu estación y un vehiculo</h2>
+        <div id="map">
+        </div>
+        <script>
+
+                // 1. Get the stations data passed from PHP, converting it to a JS array
+            // We use the PHP variable $stationsData, which is now available.
+            const stationLocations = <?= json_encode($stationsData) ?>;
+          var map = L.map('map').setView([20.68097, -101.37954], 13);
+
+            L.tileLayer('https://api.maptiler.com/maps/streets-v4/{z}/{x}/{y}.png?key=dPzx6RQTiPhK08NfWVKU', {
+                attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+            }).addTo(map);
+
+                // 4. Loop through stations and add markers
+            stationLocations.forEach(function(station) {
+                // Create the marker using the coordinates
+                // Note: The fields in the JS object must match the fields selected in the Controller ('latitude', 'longitude', 'name')
+                const marker = L.marker([station.latitude, station.longitude]).addTo(map);
+                
+                // Add a popup with the station name (Public View requirement)
+                marker.bindPopup("<b>" + station.name + "</b><br>Station").openPopup();
+            });
+
+        </script>
+    </section>
+
+    <section>
+        <script>
+            stationLocations.forEach(function(station) {
+
+                if (station.id) {
+                // Use a template literal (backticks ``) for clean string formatting:
+        const url = `/stations/view/${station.id}`; // Link to the station's detail page 
+                
+                // Create the button/link element with the station name.
+                const buttonHtml = `
+                    <div class="station-popup">
+                        <b>${station.name}</b>
+                        <a href="${url}" class="view-vehicles-btn">
+                            Ver vehículos
+                        </a>
+                    </div>
+                `;
+
+                L.marker([station.latitude, station.longitude])
+                    .bindPopup(buttonHtml)
+                    .addTo(map);
+                }
+            });
+        </script>
+    </section>
+
+</body>
+
+</html>

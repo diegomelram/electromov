@@ -55,6 +55,14 @@ class VehiclesTable extends Table
         $this->hasMany('Trips', [
             'foreignKey' => 'vehicle_id',
         ]);
+        // Association 2: Current Station (Use LEFT Join)
+        $this->belongsTo('Stations', [
+            'foreignKey' => 'current_station_id', // Must match the field name
+            'joinType' => 'LEFT', // Allows NULLs (vehicles in use)
+            // Set the alias (association name) to 'CurrentStations' to avoid conflict if you later add 'StartStation' or 'EndStation'
+            'className' => 'Stations'
+        ]);
+
     }
 
     /**

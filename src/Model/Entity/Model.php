@@ -34,6 +34,7 @@ class Model extends Entity
         'type' => true,
         'brand' => true,
         'rate_per_minute' => true,
+        'image_path' => true,
         'created' => true,
         'modified' => true,
         'vehicles' => true,

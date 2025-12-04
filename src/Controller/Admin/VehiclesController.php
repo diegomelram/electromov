@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
+use App\Controller\Admin\AppController;
 
 /**
  * Vehicles Controller
@@ -57,7 +57,8 @@ class VehiclesController extends AppController
             $this->Flash->error(__('The vehicle could not be saved. Please, try again.'));
         }
         $models = $this->Vehicles->Models->find('list', limit: 200)->all();
-        $this->set(compact('vehicle', 'models'));
+        $stations = $this->Vehicles->Stations->find('list')->all();
+        $this->set(compact('vehicle', 'models','stations'));
     }
 
     /**

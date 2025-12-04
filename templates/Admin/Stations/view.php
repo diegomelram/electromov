@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Station $station
  */
 ?>
+<link rel="stylesheet" href="/css/view.css">
 <div class="row">
     <aside class="column">
         <div class="side-nav">

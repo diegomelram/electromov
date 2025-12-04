@@ -4,8 +4,9 @@
  * @var iterable<\App\Model\Entity\Model> $models
  */
 ?>
+<link rel="stylesheet" href="/css/stations.css">
 <div class="models index content">
-    <?= $this->Html->link(__('New Model'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('Nuevo Model'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Models') ?></h3>
     <div class="table-responsive">
         <table>
@@ -25,6 +26,16 @@
                 <?php foreach ($models as $model): ?>
                 <tr>
                     <td><?= $this->Number->format($model->id) ?></td>
+                    <td>
+                        <?php if (!empty($model->image_path)): ?>
+                            <?= $this->Html->image($model->image_path, [
+                                'alt' => h($model->name),
+                                'style' => 'width: 50px; height: 50px; object-fit: cover;' // Thumbnail styling
+                            ]) ?>
+                        <?php else: ?>
+                            No image
+                        <?php endif; ?>
+                    </td>
                     <td><?= h($model->name) ?></td>
                     <td><?= h($model->type) ?></td>
                     <td><?= h($model->brand) ?></td>
@@ -47,15 +58,5 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>

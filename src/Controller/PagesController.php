@@ -53,6 +53,7 @@ class PagesController extends AppController
         }
         $page = $subpage = null;
 
+        $this->viewBuilder()->setLayout('unauthenticated');
         if (!empty($path[0])) {
             $page = $path[0];
         }
@@ -60,6 +61,33 @@ class PagesController extends AppController
             $subpage = $path[1];
         }
         $this->set(compact('page', 'subpage'));
+
+        // 1. Load the Models Table
+        $modelsTable = $this->fetchTable('Models'); //  Correct for CakePHP 5+
+
+        // 2. Fetch the data
+        // Fetch all models, ordered by type or name
+        $vehicleModels = $modelsTable->find() // 'all' is the default finder, can be omitted
+        ->select([
+            'id', 
+            'name', 
+            'type', 
+            'brand', 
+            'rate_per_minute', 
+            'image_path' // Ensure this is also selected
+        ])
+        ->order(['Models.name' => 'ASC'])
+        ->all();
+
+        // 3. Pass the data to the view
+        // 'vehicleModels' will now be available in your view template
+        $this->set(compact('vehicleModels'));
+
+        // 4. Fetch Stations data (assuming you have a 'Stations' table)
+        $stationsTable = $this->fetchTable('Stations');
+        $stationsData = $stationsTable->find()->select(['id', 'name', 'latitude', 'longitude'])->all();
+        $this->set(compact('stationsData')); // Pass to view 
+        
 
         try {
             return $this->render(implode('/', $path));
@@ -69,6 +97,18 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+        
+    }
+
+
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+
+        // This allows the public to view the page without logging in.
+        $this->Authentication->allowUnauthenticated(['display']);
+
+
     }
 
 }

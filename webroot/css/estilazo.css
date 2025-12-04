@@ -1,0 +1,360 @@
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #fdfcf7; 
+    color: #2e2417;     
+}
+
+
+.top-nav {
+    width: 100%;
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px); 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.nav-logo {
+    width: 150px;
+    object-fit: contain;
+}
+
+
+.hero {
+    text-align: center;
+    padding: 120px 25px;
+    animation: fadeIn 1.2s ease;
+    background:url('/img/background.png');
+    background-size: cover;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 10px;
+    text-shadow:5px 5px 15px white;
+}
+
+.hero-sub {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #3c2e20;
+    text-shadow: 2px 2px 15px white;
+}
+
+
+.cta-btn {
+    background: #8ee7a2;
+    color: #1c2a1c;
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #78d88f;
+    transform: translateY(-4px);
+}
+
+
+.benefits {
+    padding: 60px 25px;
+    text-align: center;
+}
+
+.benefits h2,.model-section h2,.map-section h2,.map-section-staions h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+
+.benefit-grid {
+    display: grid;
+    gap: 25px;
+    max-width: 100%;
+    margin: auto;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+
+.benefit-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #f3f3f3;
+    color: #5a4b3d;
+    margin-top: 60px;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.top-nav a{
+    display: inline-block; /* Allows setting padding, width, and height */
+    text-decoration: none; /* Removes the standard underline */
+    margin-left: 15px; /* Adds space between the logo and the button */
+    
+    /* 2. Appearance */
+    background-color: #007bff; /* A standard, professional blue */
+    color: white; /* White text for contrast */
+    padding: 8px 15px; /* Vertical and horizontal padding */
+    border-radius: 5px; /* Slightly rounded corners */
+    font-size: 16px; /* Ensure readability */
+    font-weight: 600; /* Bolder text to stand out (since you are using Poppins 600) */
+    
+    /* 3. Transition for Smooth Hover Effect */
+    transition: background-color 0.3s ease;
+    align-items: right;
+}
+
+
+.model-cards-container{
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+}
+.model-section{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+
+
+/*//////////////////MAP/////////////*/
+#map {
+    height:500px;
+    width: 60%;
+}
+
+.map-section{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    padding-top: 10%;
+}
+
+.map-section-staions{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+
+/*//////////////////////////stations/index///////////////////*/
+/* Styling for the popup content container */
+
+.station-popup {
+    text-align: center;
+    padding: 5px;
+}
+
+/* Styling for the link itself to look like a button */
+.view-vehicles-btn {
+    /* Layout and Display */
+    display: block; /* Make it take the full width of the popup */
+    margin-top: 8px;
+    padding: 8px 12px;
+    
+    /* Appearance */
+    background-color: green; /* Green color for 'Available/Go' */
+    color: white; /* White text */
+    text-decoration: none; /* Remove underline */
+    border-radius: 4px; /* Rounded corners */
+    font-weight: bold;
+    font-size: 14px;
+    
+    /* Transition for Smooth Hover */
+    transition: background-color 0.2s ease;
+}
+
+/* Hover State */
+.view-vehicles-btn:hover {
+    background-color: black; /* Darker green on hover */
+}
+
+/*/////////////////////REGISTRARSE////////////////*/
+
+.signup {
+    /* Form Card Styling */
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle lift */
+    width: 100%;
+    max-width: 420px; /* Limits the form width for readability */
+    margin: 50px auto; /* Centers the form block horizontally */
+}
+
+.signup legend {
+    /* Style the 'Registrate' legend */
+    font-size: 26px;
+    color: black;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 5px solid green; /* Primary color separator */
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+/* Style all form controls */
+.signup input[type="text"],
+.signup input[type="email"],
+.signup input[type="password"],
+.signup input[type="date"],
+.signup input[type="number"],
+.signup select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px; /* Adds space below each field */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding doesn't widen the field */
+    transition: border-color 0.3s;
+}
+
+/* Focus state for better UX */
+.signup input:focus,
+.signup select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+/* Style the 'Submit' button */
+.signup button[type="submit"] {
+    width: 100%;
+    background-color: green; /* Primary action color */
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.signup button[type="submit"]:hover {
+    background-color: darkgreen; /* Darker on hover */
+}
+
+/*/////////////////////////LOGIN/////////////////////*/
+
+/* Targets the div with classes 'users' and 'form' */
+.users.form {
+    /* Form Card Styling */
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Slightly darker shadow for focus */
+    width: 100%;
+    max-width: 380px; /* Slimmer than registration for focus */
+    margin: 80px auto; /* Centers the form block horizontally */
+}
+
+/* Style the main Login header */
+.users.form h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Style the legend inside the fieldset */
+.users.form legend {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+}
+
+/* Style all form controls */
+.users.form input[type="text"],
+.users.form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px; 
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box; 
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Focus state for better UX */
+.users.form input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+/* Style the Login Submit button */
+.users.form input[type="submit"] {
+    width: 100%;
+    background-color: green; /* Primary action color */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.users.form input[type="submit"]:hover {
+    background-color: darkgreen; /* Darker on hover */
+}
+
+/* Style the 'Add User' link */
+.users.form a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.users.form a:hover {
+    text-decoration: underline;
+}

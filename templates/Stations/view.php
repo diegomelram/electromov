@@ -4,48 +4,19 @@
  * @var \App\Model\Entity\Station $station
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Station'), ['action' => 'edit', $station->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Station'), ['action' => 'delete', $station->id], ['confirm' => __('Are you sure you want to delete # {0}?', $station->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Stations'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Station'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column column-80">
+<link rel="stylesheet" href="/css/estilazo.css">
         <div class="stations view content">
-            <h3><?= h($station->name) ?></h3>
+            <h3> Vehículos disponibles en <?= h($station->name) ?></h3>
             <table>
                 <tr>
                     <th><?= __('Name') ?></th>
                     <td><?= h($station->name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($station->id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Latitude') ?></th>
-                    <td><?= $this->Number->format($station->latitude) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Longitude') ?></th>
-                    <td><?= $this->Number->format($station->longitude) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Capacity') ?></th>
                     <td><?= $station->capacity === null ? '' : $this->Number->format($station->capacity) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Created') ?></th>
-                    <td><?= h($station->created) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Modified') ?></th>
-                    <td><?= h($station->modified) ?></td>
-                </tr>
+            
             </table>
             <div class="text">
                 <strong><?= __('Address') ?></strong>
@@ -54,5 +25,28 @@
                 </blockquote>
             </div>
         </div>
-    </div>
-</div>
+
+<section>
+        <div class="model-section">
+            <h2>Vehículos disponibles</h2>
+            <p>Elige tu vehículo ideal y muévete por la ciudad.</p>
+        </div>
+            <div class="model-cards-container">
+            <?php foreach ($availableVehicles as $vehicle): ?>
+                <div class="vehicle-card">
+                    <?php if (!empty($vehicle->model->image_path)): ?>
+                        <?= $this->Html->image($vehicle->model->image_path, ['class' => 'vehicle-img']) ?>
+                    <?php endif; ?>
+                    
+                    <h4><?= h($vehicle->model->name) ?></h4>
+                    <p>Batería: <?= h($vehicle->battery_level) ?>%</p>
+                    <p>Tarifa: $<?= $this->Number->format($vehicle->model->rate_per_minute) ?> / min</p>
+                    
+                    <?= $this->Html->link('Rentar Ahora', 
+                        ['controller' => 'Trips', 'action' => 'add', $vehicle->id], 
+                        ['class' => 'button']
+                    ) ?>
+                </div>
+            <?php endforeach; ?>
+            </div>
+    </section>

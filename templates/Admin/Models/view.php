@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Model $model
  */
 ?>
+<link rel="stylesheet" href="/css/view.css">
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -17,6 +18,19 @@
     <div class="column column-80">
         <div class="models view content">
             <h3><?= h($model->name) ?></h3>
+
+            <?php if (!empty($model->image_path)): ?>
+                <div class="image-display-container" style="text-align: center; margin-bottom: 20px;">
+                    <h4>Imagen del Modelo</h4>
+                    <?= $this->Html->image($model->image_path, [
+                        'alt' => h($model->name),
+                        'style' => 'max-width: 300px; height: 300px;' // Larger image styling
+                    ]) ?>
+                </div>
+            <?php else: ?>
+                <p>Ruta de Imagen: No definida</p>
+            <?php endif; ?>
+            
             <table>
                 <tr>
                     <th><?= __('Name') ?></th>

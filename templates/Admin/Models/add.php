@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Model $model
  */
 ?>
+<link rel="stylesheet" href="/css/add.css">
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -21,6 +22,7 @@
                     echo $this->Form->control('type');
                     echo $this->Form->control('brand');
                     echo $this->Form->control('rate_per_minute');
+                    echo $this->Form->control('image_path');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

@@ -44,6 +44,11 @@ class StationsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        // Association 1: Vehicles (has many vehicles)
+        $this->hasMany('Vehicles', [
+            'foreignKey' => 'current_station_id', // Must match the field name in the Vehicles table
+        ]);
     }
 
     /**
