@@ -12,12 +12,12 @@
 	<title>AdminHub</title>
 </head>
 <body>
-	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile  bx-lg'></i>
-			<span class="text">AdminHub</span>
-		</a>
+		<div class="logo_content">
+			<a href="/admin/dashboard" class="brand">
+				<?= $this->Html->image('electromov.png', ['alt' => 'Electromov Logo']) ?>
+			</a>
+		</div>
 		<ul class="side-menu top">
 			<li class="active">
 				<a href="/admin/dashboard">
@@ -29,6 +29,12 @@
 				<a href="/admin/trips">
 					<i class='bx  bx-trip bx-sm'></i> 
 					<span class="text">Viajes</span>
+				</a>
+			</li>
+			<li>
+				<a href="/admin/stations">
+					<i class='bx  bx-current-location bx-sm'></i> 
+					<span class="text">Estaciones</span>
 				</a>
 			</li>
 			<li>
@@ -49,6 +55,18 @@
 					<span class="text">Usuarios</span>
 				</a>
 			</li>
+			<li>
+				<a href="/admin/paymethods">
+					<i class='bx bx-wallet bx-sm' ></i>
+					<span class="text">Metodos de Pago</span>
+				</a>
+			</li>
+			<li>
+				<a href="/admin/promotions">
+					<i class='bx bx-dollar bx-sm' ></i>
+					<span class="text">Promociones</span>
+				</a>
+			</li>
 		</ul>
 		<ul class="side-menu bottom">
 			<li>
@@ -59,46 +77,31 @@
 			</li>
 		</ul>
 	</section>
-	<!-- SIDEBAR -->
 
-
-
-	<!-- CONTENT -->
 	<section id="content">
-		<!-- NAVBAR -->
     <nav>
-        <a href="#" class="nav-link">Categories</a>
+		<input type="checkbox" id="profile-toggle" hidden>
+
+		<div class="right">
+			<label for="profile-toggle" class="profile">
+			<i class='bx bx-user bx-sm'></i>
+			</label>
+		</div>
+
+		<div class="profile-menu">
+			<ul>
+				<li><a href="#">Mi Perfil</a></li>
+				<li><a href="#">Cerrar Sesión</a></li>
+			</ul>
+		</div>
+</nav>
 
 
-        <!-- Profile Menu -->
-        <!-- Checkbox oculto que controla el menú -->
-        <input type="checkbox" id="profile-toggle" hidden>
-
-        <!-- Icono de perfil -->
-        <label for="profile-toggle" class="profile">
-            <img src="https://placehold.co/600x400/png" alt="Profile">
-        </label>
-
-        <!-- Menú de perfil -->
-        <div class="profile-menu">
-            <ul>
-                <li><a href="#">My Profile</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Log Out</a></li>
-            </ul>
-        </div>
-    </nav>
-    
-
-		<!-- MAIN -->
     <main class="main content">
         <?= $this->Flash->render() ?>
         <?= $this->fetch('content') ?>
     </main>
-		<!-- MAIN -->
 	</section>
-	<!-- CONTENT -->
-	
 
 	<script src="script.js"></script>
 </body>

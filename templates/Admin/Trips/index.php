@@ -4,74 +4,97 @@
  * @var iterable<\App\Model\Entity\Trip> $trips
  */
 ?>
-<div class="trips index content">
-    <?= $this->Html->link(__('New Trip'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Trips') ?></h3>
-    <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('user_id') ?></th>
-                    <th><?= $this->Paginator->sort('vehicle_id') ?></th>
-                    <th><?= $this->Paginator->sort('start_station_id') ?></th>
-                    <th><?= $this->Paginator->sort('end_station_id') ?></th>
-                    <th><?= $this->Paginator->sort('paymethod_id') ?></th>
-                    <th><?= $this->Paginator->sort('promotion_id') ?></th>
-                    <th><?= $this->Paginator->sort('start_time') ?></th>
-                    <th><?= $this->Paginator->sort('end_time') ?></th>
-                    <th><?= $this->Paginator->sort('duration_minutes') ?></th>
-                    <th><?= $this->Paginator->sort('base_rate') ?></th>
-                    <th><?= $this->Paginator->sort('total_cost') ?></th>
-                    <th><?= $this->Paginator->sort('status') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($trips as $trip): ?>
-                <tr>
-                    <td><?= $this->Number->format($trip->id) ?></td>
-                    <td><?= $trip->hasValue('user') ? $this->Html->link($trip->user->email, ['controller' => 'Users', 'action' => 'view', $trip->user->id]) : '' ?></td>
-                    <td><?= $trip->hasValue('vehicle') ? $this->Html->link($trip->vehicle->serial_number, ['controller' => 'Vehicles', 'action' => 'view', $trip->vehicle->id]) : '' ?></td>
-                    <td><?= $this->Number->format($trip->start_station_id) ?></td>
-                    <td><?= $trip->end_station_id === null ? '' : $this->Number->format($trip->end_station_id) ?></td>
-                    <td><?= $trip->hasValue('paymethod') ? $this->Html->link($trip->paymethod->id, ['controller' => 'Paymethods', 'action' => 'view', $trip->paymethod->id]) : '' ?></td>
-                    <td><?= $trip->hasValue('promotion') ? $this->Html->link($trip->promotion->code, ['controller' => 'Promotions', 'action' => 'view', $trip->promotion->id]) : '' ?></td>
-                    <td><?= h($trip->start_time) ?></td>
-                    <td><?= h($trip->end_time) ?></td>
-                    <td><?= $trip->duration_minutes === null ? '' : $this->Number->format($trip->duration_minutes) ?></td>
-                    <td><?= $this->Number->format($trip->base_rate) ?></td>
-                    <td><?= $trip->total_cost === null ? '' : $this->Number->format($trip->total_cost) ?></td>
-                    <td><?= h($trip->status) ?></td>
-                    <td><?= h($trip->created) ?></td>
-                    <td><?= h($trip->modified) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $trip->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $trip->id]) ?>
-                        <?= $this->Form->postLink(
-                            __('Delete'),
-                            ['action' => 'delete', $trip->id],
-                            [
-                                'method' => 'delete',
-                                'confirm' => __('Are you sure you want to delete # {0}?', $trip->id),
-                            ]
-                        ) ?>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+
+<link rel="stylesheet" href="/css/index2.css">
+
+<div class="page-header">
+    <h2 class="title">Gestión de Viajes</h2>
+
+    <div class="actions-top">
+        <?= $this->Html->link(
+            ' Agregar Viaje',
+            ['action' => 'add'],
+            ['class' => 'btn-add']
+        ) ?>
     </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
+</div>
+
+<div class="grid-trips">
+    <?php foreach ($trips as $trip): ?>
+        <div class="trip-card">
+
+            <h3>Viaje #<?= $trip->id ?></h3>
+
+            <p><strong>Usuario:</strong>
+                <?= $trip->hasValue('user') ? $trip->user->email : '—' ?>
+            </p>
+
+            <p><strong>Vehículo:</strong>
+                <?= $trip->hasValue('vehicle') ? $trip->vehicle->serial_number : '—' ?>
+            </p>
+
+            <p><strong>Inicio:</strong> <?= $trip->start_station_id ?></p>
+            <p><strong>Fin:</strong> <?= $trip->end_station_id ?? '—' ?></p>
+
+            <p><strong>Costo:</strong> $<?= $trip->total_cost ?? '0.00' ?></p>
+
+            <p><strong>Estado:</strong>
+                <span class="status <?= strtolower($trip->status) ?>">
+                    <?= h($trip->status) ?>
+                </span>
+            </p>
+
+            <div class="card-actions">
+                <a href="#trip-<?= $trip->id ?>" class="btn-details">Ver detalles →</a>
+            </div>
+
+        </div>
+
+
+        <!-- PANEL LATERAL SIN JS -->
+        <div id="trip-<?= $trip->id ?>" class="side-panel">
+            <a href="#" class="close-panel">✖</a>
+            <h2>Detalles del Viaje #<?= $trip->id ?></h2>
+
+            <div class="panel-content">
+                <p><strong>Usuario:</strong>
+                    <?= $trip->hasValue('user') ? $trip->user->email : '—' ?>
+                </p>
+
+                <p><strong>Vehículo:</strong>
+                    <?= $trip->hasValue('vehicle') ? $trip->vehicle->serial_number : '—' ?>
+                </p>
+
+                <p><strong>Inicio:</strong> <?= $trip->start_station_id ?></p>
+                <p><strong>Fin:</strong> <?= $trip->end_station_id ?? '—' ?></p>
+
+                <p><strong>Salida:</strong> <?= h($trip->start_time) ?></p>
+                <p><strong>Llegada:</strong> <?= h($trip->end_time) ?></p>
+
+                <p><strong>Costo Total:</strong> $<?= $trip->total_cost ?? '0.00' ?></p>
+
+                <p><strong>Estado:</strong>
+                    <span class="status <?= strtolower($trip->status) ?>">
+                        <?= h($trip->status) ?>
+                    </span>
+                </p>
+
+                <hr>
+
+                <div class="panel-buttons">
+                    <?= $this->Html->link('👁 Ver', ['action' => 'view', $trip->id], ['class' => 'btn-view']) ?>
+                    <?= $this->Html->link('✏️ Editar', ['action' => 'edit', $trip->id], ['class' => 'btn-edit']) ?>
+                    <?= $this->Form->postLink(
+                        '🗑 Eliminar',
+                        ['action' => 'delete', $trip->id],
+                        [
+                            'confirm' => "¿Eliminar el viaje #{$trip->id}?",
+                            'class'   => 'btn-delete'
+                        ]
+                    ) ?>
+                </div>
+            </div>
+        </div>
+
+    <?php endforeach; ?>
 </div>
