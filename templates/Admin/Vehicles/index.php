@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/index2.css">
 <div class="cards-header">
     <h3>Vehicles</h3>
-    <?= $this->Html->link(__('New Vehicle'), ['action' => 'add'], ['class' => 'btn-add']) ?>
+    <?= $this->Html->link(__('Nuevo vehiculo'), ['action' => 'add'], ['class' => 'btn-add']) ?>
 </div>
 
 <div class="cards-grid">

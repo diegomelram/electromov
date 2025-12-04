@@ -1,0 +1,110 @@
+.models.index.content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    margin: 20px;
+}
+
+.models.index.content h3 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.models.index.content .button.float-right {
+    background: #0056ff;
+    color: #fff !important;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    float: right;
+    margin-bottom: 10px;
+    transition: 0.2s ease;
+}
+
+.models.index.content .button.float-right:hover {
+    background: #0040c9;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table-responsive table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.table-responsive thead {
+    background: #f2f4f8;
+}
+
+.table-responsive th {
+    padding: 14px 10px;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.table-responsive td {
+    padding: 14px 10px;
+    border-bottom: 1px solid #efefef;
+}
+
+.table-responsive img {
+    border-radius: 10px;
+}
+
+.table-responsive tbody tr:hover {
+    background: #f9fbff;
+}
+
+.actions a {
+    margin-right: 8px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.actions a:nth-child(1) {
+    background: #e5f0ff;
+    color: #0056ff;
+}
+
+.actions a:nth-child(1):hover {
+    background: #d2e2ff;
+}
+
+.actions a:nth-child(2) {
+    background: #fff2d6;
+    color: #b46b00;
+}
+
+.actions a:nth-child(2):hover {
+    background: #ffe4ac;
+}
+
+.actions form button,
+.actions form input[type="submit"],
+.actions a.delete {
+    background: #ffe1e1;
+    color: #c30000;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.actions form button:hover {
+    background: #ffcccc;
+}
+

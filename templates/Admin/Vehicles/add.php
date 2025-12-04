@@ -5,6 +5,7 @@
  * @var \Cake\Collection\CollectionInterface|string[] $models
  */
 ?>
+<link rel="stylesheet" href="/css/add.css">
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -31,4 +32,5 @@
             <?= $this->Form->end() ?>
         </div>
     </div>
+
 </div>

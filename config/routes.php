@@ -49,10 +49,10 @@ return function (RouteBuilder $routes): void {
      */
 
     $routes->prefix('Admin', function (RouteBuilder $routes) {
-    // Todas las rutas aquí tendrán el prefijo `/admin`, y
-    // tendrán el elemento de ruta `'prefix' => 'Admin'` agregado que
-    // será necesario para generar URL para estas rutas
-    $routes->fallbacks(DashedRoute::class);
+        
+        $routes->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
+        
+        $routes->fallbacks(DashedRoute::class);
     });
 
     $routes->setRouteClass(DashedRoute::class);

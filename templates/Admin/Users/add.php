@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
+<link rel="stylesheet" href="/css/add.css">
 <div class="row">
     <aside class="column">
         <div class="side-nav">
